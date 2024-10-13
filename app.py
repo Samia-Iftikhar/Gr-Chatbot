@@ -6,8 +6,6 @@ key = os.getenv("Groq")
 client = Groq(api_key = key)
 
 def chat(message, history):
-
-
   chat_completion = client.chat.completions.create(
       #
       # Required parameters
@@ -27,15 +25,11 @@ def chat(message, history):
       # The language model which will generate the completion.
       model="llama3-8b-8192",
       temperature=0.5,
-
       max_tokens=1024,
-
       top_p=1,
-
       stop=None,
       stream=False,
   )
-
   return chat_completion.choices[0].message.content
 
 demo = gr.ChatInterface(fn=chat, title="Open Source chatbot")
